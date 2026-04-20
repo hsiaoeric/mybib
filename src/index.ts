@@ -11,7 +11,7 @@ import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { createMcpExpressApp } from "@modelcontextprotocol/sdk/server/express.js";
 import { z } from "zod";
 import { searchCitation } from "./mybib-client.js";
-import { formatVancouver } from "./vancouver.js";
+import { formatAma } from "./ama.js";
 
 import type { Request, Response } from "express";
 
@@ -74,7 +74,7 @@ function createMcpServer(): McpServer {
           page: r.metadata.page ?? null,
           url: r.metadata.url ?? url,
           credibility: r.credibility ?? null,
-          vancouverCitation: formatVancouver(r.metadata, r.sourceId),
+          amaCitation: formatAma(r.metadata, r.sourceId),
         }));
 
         return {
